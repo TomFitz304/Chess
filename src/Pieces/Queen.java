@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Queen extends Piece{
     public Queen(int colorNum){
-        super(colorNum, "Pieces.Queen", colorNum == 0 ? "♛" : "♕");
+        super(colorNum, colorNum == 0 ? "♛" : "♕");
     }
     public ArrayList<Coordinate> possibleMoves(Board board){
 
@@ -16,60 +16,60 @@ public class Queen extends Piece{
 
         ArrayList<Coordinate> ret = new ArrayList<Coordinate>();
         for (int j = 1; j < 8; j++) {
-            ret.add(new Coordinate(x+j,y-j,true));
+            ret.add(new Coordinate(x+j,y-j));
 
-            if (!board.getOverSizedBoardPiece(x+j,y-j).isEmpty()) {
+            if (!board.getPiece(x+j,y-j).isEmpty()) {
                 break;
             }
         }
         for (int j = 1; j < 8; j++) {
-            ret.add(new Coordinate(x+j,y,true));
+            ret.add(new Coordinate(x+j,y));
 
-            if (!board.getOverSizedBoardPiece(x+j,y).isEmpty()) {
-                break;
-            }
-
-        }
-        for (int j = 1; j < 8; j++) {
-            ret.add(new Coordinate(x+j,y+j,true));
-
-            if (!board.getOverSizedBoardPiece(x+j,y+j).isEmpty()) {
+            if (!board.getPiece(x+j,y).isEmpty()) {
                 break;
             }
 
         }
         for (int j = 1; j < 8; j++) {
-            ret.add(new Coordinate(x-j,y-j,true));
+            ret.add(new Coordinate(x+j,y+j));
 
-            if (!board.getOverSizedBoardPiece(x-j,y-j).isEmpty()) {
+            if (!board.getPiece(x+j,y+j).isEmpty()) {
                 break;
             }
 
         }
         for (int j = 1; j < 8; j++) {
-            ret.add(new Coordinate(x-j,y,true));
+            ret.add(new Coordinate(x-j,y-j));
 
-            if (!board.getOverSizedBoardPiece(x-j,y).isEmpty()) {
+            if (!board.getPiece(x-j,y-j).isEmpty()) {
+                break;
+            }
+
+        }
+        for (int j = 1; j < 8; j++) {
+            ret.add(new Coordinate(x-j,y));
+
+            if (!board.getPiece(x-j,y).isEmpty()) {
                 break;
             }
         }
         for (int j = 1; j < 8; j++) {
-            ret.add(new Coordinate(x-j,y+j,true));
+            ret.add(new Coordinate(x-j,y+j));
 
-            if (!board.getOverSizedBoardPiece(x-j,y+j).isEmpty()) {
+            if (!board.getPiece(x-j,y+j).isEmpty()) {
                 break;
             }
         }
         for (int j = 1; j < 8; j++) {
-            ret.add(new Coordinate(x,y-j,true));
-            if (!board.getOverSizedBoardPiece(x,y-j).isEmpty()) {
+            ret.add(new Coordinate(x,y-j));
+            if (!board.getPiece(x,y-j).isEmpty()) {
                 break;
             }
         }
         for (int j = 1; j < 8; j++) {
-            ret.add(new Coordinate(x,y+j,true));
+            ret.add(new Coordinate(x,y+j));
 
-            if (!board.getOverSizedBoardPiece(x+j,y-j).isEmpty()) {
+            if (!board.getPiece(x+j,y-j).isEmpty()) {
                 break;
             }
         }

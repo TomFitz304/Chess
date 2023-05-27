@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class King extends Piece{
 
     public King(int colorNum){
-        super(colorNum, "Pieces.King", colorNum == 0 ? "♚" : "♔");
+        super(colorNum, colorNum == 0 ? "♚" : "♔");
     }
     public ArrayList<Coordinate> possibleMoves(Board board){
         int y = coordinate.getY();

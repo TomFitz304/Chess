@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Knight extends Piece{
 
     public Knight(int colorNum){
-        super(colorNum, "Pieces.Knight", colorNum == 0 ? "♞" : "♘");
+        super(colorNum, colorNum == 0 ? "♞" : "♘");
     }
     public ArrayList<Coordinate> possibleMoves(Board board){
 

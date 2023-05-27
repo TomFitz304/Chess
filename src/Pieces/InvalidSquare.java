@@ -5,19 +5,19 @@ import BoardDetails.Coordinate;
 
 import java.util.ArrayList;
 
-public class EmptySquare extends Piece {
+public class InvalidSquare extends Piece {
 
-    public EmptySquare() {
+    public InvalidSquare() {
         super(0, " ");
         color = "NoColor";
     }
 
+    @Override
     public ArrayList<Coordinate> possibleMoves(Board board) {
-        return new ArrayList<Coordinate>();
+        return null;
     }
 
-    @Override
-    public boolean isEmpty() {
-        return true;
+    public boolean isValid() {
+        return false;
     }
 }

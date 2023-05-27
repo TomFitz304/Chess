@@ -4,20 +4,15 @@ import BoardDetails.Board;
 import BoardDetails.Coordinate;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class Piece extends JButton {
     protected String icon;
 
-    protected String name;
-
     protected String color;
 
     protected int moveNum;
-
-    protected int yVal;
-
-    protected int xVal;
 
     protected boolean threatened;
 
@@ -25,11 +20,11 @@ public abstract class Piece extends JButton {
 
     protected Coordinate coordinate;
 
-    Piece(int colorNum, String name, String icon) {
+    Piece(int colorNum, String icon) {
         super(icon);
+        setFont(new Font(Font.DIALOG_INPUT, Font.PLAIN, 80));
         color = colorNum == 0 ? "Black" : "White";
         this.icon = icon;
-        name = color + " " + Object.class.getSimpleName();
         moveNum = 0;
         threatened = false;
     }
@@ -63,19 +58,20 @@ public abstract class Piece extends JButton {
 
     public void setThreatened(boolean input) {
         threatened = input;
-    }
-
-    public boolean isThreatened() {
-        return threatened;
+        setBackground(threatened ? Color.yellow : Color.white);
     }
 
     public boolean isEmpty() {
-        return icon.equals(" ");
+        return false;
+    }
+
+    public boolean isValid() {
+        return true;
     }
 
     public ArrayList<Coordinate> possibleMoveArray(Board inputBoard, ArrayList<Coordinate> coordinates) {
 
-        ArrayList<Coordinate> ret = new ArrayList<Coordinate>();
+        ArrayList<Coordinate> ret = new ArrayList<>();
         String color = inputBoard.getPiece(coordinate.getX(), coordinate.getY()).getColor();
 
         for (Coordinate coordinate : coordinates) {
