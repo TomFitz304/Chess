@@ -6,10 +6,8 @@ public class Board {
 
     public static final int BOARD_ROWS = 8;
     public static final int BOARD_COLS = 8;
-    private static final int BOARD_MULTIPLIER = 3;
 
     private final Piece[][] board = new Piece[BOARD_ROWS][BOARD_COLS];
-    private final Piece[][] overSizedBoard = new Piece[BOARD_ROWS * BOARD_MULTIPLIER][BOARD_COLS * BOARD_MULTIPLIER];
 
     public Board() {
         resetBoard();
@@ -39,23 +37,6 @@ public class Board {
             }
 
         }
-
-        resetOverSizedBoard();
-    }
-
-    private void resetOverSizedBoard() {
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                overSizedBoard[i + 8][j + 8] = board[i][j];
-            }
-        }
-        for (int i = 0; i < 24; i++) {
-            for (int j = 0; j < 24; j++) {
-                if (overSizedBoard[i][j] == null) {
-                    overSizedBoard[i][j] = new EmptySquare();
-                }
-            }
-        }
     }
 
     private void assignStartPos(Piece piece, int x, int y) {
@@ -65,9 +46,10 @@ public class Board {
 
     public void movePiece(int xInitial, int yInitial, int xFinal, int yFinal) {
         // The piece at the starting position on the input board will go to the place of the next available square
-        // setting it to null.
+        // setting it to emptySquare.
         board[xFinal][yFinal] = board[xInitial][yInitial];
         board[xInitial][yInitial] = new EmptySquare();
+        board[xInitial][yInitial].updatePos(xInitial,yInitial);
         board[xFinal][yFinal].updatePos(xFinal, yFinal);
         board[xFinal][yFinal].incrementMoveNum();
     }
